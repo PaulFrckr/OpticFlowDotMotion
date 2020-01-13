@@ -252,10 +252,10 @@ try
             
             % compute the new cartesian velocities
             if rot_flag
-                dxdy(r_out,:) = [dr(r_out).* (r_speed_factor*r(r_out)) dr(r_out).* (r_speed_factor*r(r_out))] .* [(pfs/2)*mdir_x(r_out).*sin(t(r_out)) (pfs/2)*mdir_y(r_out).*cos(t(r_out))];
+                dxdy(r_out,:) = [dr(r_out).* (r_speed_factor*r(r_out)) dr(r_out).* (r_speed_factor*r(r_out))] .* [(pfs/4)*mdir_x(r_out).*sin(t(r_out)) (pfs/4)*mdir_y(r_out).*cos(t(r_out))];
             end
             if rad_flag
-                dr(r_out) = (pfs/2) * mdir(r_out) .* (r_speed_factor*r(r_out));
+                dr(r_out) = (pfs/4) * mdir(r_out) .* (r_speed_factor*r(r_out));
                 dxdy(r_out,:) = [dr(r_out) dr(r_out)] .* [cos(t(r_out) + dt(r_out)) sin(t(r_out) + dt(r_out))];
             end
             if trans_flag
