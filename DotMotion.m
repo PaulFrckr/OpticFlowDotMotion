@@ -36,8 +36,6 @@ try
     mon_width   = 497;      % horizontal dimension of viewable screen/monitor (cm)
     v_dist      = 180;      % viewing distance from monitor (cm)
     dot_speed   = 7;        % dot speed (deg/sec)
-    max_d       = 100;      % maximum radius of annulus (degrees)
-    min_d       = 0;        % minumum
     dot_w       = 0.20;     % width of dot (deg)
     life_limit  = 200;      % lifetime of each dot (ms)
     waitframes  = 1;        % Show new dot-images at each waitframes monitor refresh.
@@ -100,7 +98,9 @@ try
     s = dot_w * ppd;                                                                    % dot size (pixels)
     r_speed_factor = 0.3 / ppd;                                                         % factor for radius depending velocities
 
-    ndots =  floor(density * ((rect(3) - rect(1)) * (rect(4) - rect(2)) * (1/ppd)^2));  % number of dots from density(dots/degree^2)
+    max_d = 0.5*(rect(3) - rect(1)+300)*(1/ppd);                                        % maximum radius of annulus (degrees), take all screen
+    min_d = 0;                                                                          % minumum
+    ndots =  floor(density * (pi * max_d^2));                                           % number of dots from density(dots/degree^2)
     random_dir = zeros(ndots, 1);                                                       % vector defining if a dot will have a random direction (1) or not (0)
     rand_n = ndots * rand_percent;                                                      % number of dots having a random direction
     random_dir(randperm(numel(random_dir), floor(rand_n))) = 1;                         % update vector
