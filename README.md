@@ -1,5 +1,5 @@
 # OpticFlowDotMotion
-## Motions for different component of optical flow using dots
+## Motions for different components of optical flow using dots
 
 Three different motions observed via optical flow: 
   - Translation
